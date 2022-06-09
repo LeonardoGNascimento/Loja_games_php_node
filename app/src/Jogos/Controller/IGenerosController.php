@@ -8,6 +8,6 @@ use Illuminate\Http\JsonResponse;
 interface IGenerosController
 {
     public function index(): JsonResponse;
-    public function store(GeneroRequest $request);
-    public function show($idGenero);
+    public function store(GeneroRequest $request): JsonResponse;
+    public function show($idGenero): JsonResponse;
 }

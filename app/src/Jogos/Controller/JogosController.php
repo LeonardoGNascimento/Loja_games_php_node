@@ -9,7 +9,7 @@ use App\src\Jogos\Request\JogoRequest;
 use App\src\Jogos\Service\JogosService;
 use Illuminate\Http\JsonResponse;
 
-class JogosController extends Controller
+class JogosController extends Controller implements IJogosController
 {
     public function __construct(
         protected JogosService $jogosService

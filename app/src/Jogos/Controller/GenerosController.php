@@ -21,13 +21,13 @@ class GenerosController extends Controller implements IGenerosController
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 
-    public function store(GeneroRequest $request)
+    public function store(GeneroRequest $request): JsonResponse
     {
         $resultado = $this->generosService->store($request);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 
-    public function show($idGenero)
+    public function show($idGenero): JsonResponse
     {
         $resultado = $this->generosService->show($idGenero);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);

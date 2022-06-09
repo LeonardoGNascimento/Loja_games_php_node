@@ -9,7 +9,13 @@ class Jogo extends Model
 {
     use HasFactory;
 
+    public string $nome;
+    public string $faixa_etaria;
+    public int $genero;
+    public int $id_produtora;
+
     protected $fillable = [
-        'nome'
+        'nome', 'faixa_etaria', 'genero', 'id_produtora
+        '
     ];
 }

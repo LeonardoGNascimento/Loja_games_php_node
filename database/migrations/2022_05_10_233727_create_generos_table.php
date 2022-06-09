@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('generos', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->string('nome')->unique();
+            $table->boolean('exclusao')->default(0);
             $table->timestamps();
         });
     }
