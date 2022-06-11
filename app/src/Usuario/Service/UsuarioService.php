@@ -2,21 +2,27 @@
 
 namespace App\src\Usuario\Service;
 
-use App\Dominio\Usuario\Model\Usuario;
-use App\Dominio\Usuario\Repository\UsuarioRepository;
-use App\Dominio\Usuario\Request\UsuarioRequest;
+use App\src\Usuario\Model\Usuario;
+use App\src\Usuario\Repository\UsuarioRepository;
+use App\src\Usuario\Request\UsuarioRequest;
 
 class UsuarioService
 {
-    protected UsuarioRepository $usuarioRepository;
-
-    public function __construct()
-    {
-        $this->usuarioRepository = new UsuarioRepository();
+    public function __construct(
+        protected UsuarioRepository $usuarioRepository
+    ) {
     }
 
-    public function store(UsuarioRequest $request): ?Usuario
+    public function store(UsuarioRequest $request): Usuario
     {
-        return $this->usuarioRepository->store($request);
+        $usuario = new Usuario();
+        $usuario->nome = $request['nome'];
+        $usuario->email = $request['email'];
+        $usuario->telefone = $request['telefone'];
+        $usuario->senha = md5($request['senha']);
+
+        $this->usuarioRepository->store($usuario);
+
+        return $usuario;
     }
 }

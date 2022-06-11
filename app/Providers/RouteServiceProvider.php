@@ -34,6 +34,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(function ($router) {
                 require base_path('routes/Jogos/jogos.php');
                 require base_path('routes/Produtoras/produtoras.php');
+                require base_path('routes/Usuarios/usuarios.php');
             });
     }
 
