@@ -3,7 +3,7 @@
 use App\src\Produtora\Controller\ProdutoraController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('produtoras')->group(function () {
+Route::middleware('auth:sanctum')->prefix('produtoras')->group(function () {
     Route::get('/', [ProdutoraController::class, 'index']);
     Route::get('/{id}', [ProdutoraController::class, 'show']);
     Route::post('/', [ProdutoraController::class, 'store']);

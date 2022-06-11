@@ -35,6 +35,7 @@ class RouteServiceProvider extends ServiceProvider
                 require base_path('routes/Jogos/jogos.php');
                 require base_path('routes/Produtoras/produtoras.php');
                 require base_path('routes/Usuarios/usuarios.php');
+                require base_path('routes/Vendas/vendas.php');
             });
     }
 

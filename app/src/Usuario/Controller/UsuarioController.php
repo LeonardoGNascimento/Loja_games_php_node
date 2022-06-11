@@ -25,6 +25,6 @@ class UsuarioController extends Controller
     public function login(LoginRequest $request)
     {
         $resultado = $this->usuarioService->login($request);
-        return response()->json($resultado, 200);
+        return response()->json(["token" => "Bearer {$resultado}"], 200);
     }
 }

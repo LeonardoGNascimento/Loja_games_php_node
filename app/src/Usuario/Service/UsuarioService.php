@@ -5,7 +5,6 @@ namespace App\src\Usuario\Service;
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
 use App\Models\User;
-use App\src\Usuario\Model\Usuario;
 use App\src\Usuario\Repository\UsuarioRepository;
 use App\src\Usuario\Request\LoginRequest;
 use App\src\Usuario\Request\UsuarioRequest;
