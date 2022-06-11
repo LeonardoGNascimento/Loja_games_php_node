@@ -16,8 +16,8 @@ class JogoRequest extends FormRequest
     {
         return [
             "nome" => "required|string",
-            "faixa_etaria" => "required|string",
-            "genero" => "required|string",
+            "faixa_etaria" => "required|int",
+            "id_genero" => "required|int",
             "id_produtora" => "required|integer"
         ];
     }

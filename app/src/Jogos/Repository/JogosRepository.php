@@ -10,4 +10,14 @@ class JogosRepository
     {
         return $jogo->save();
     }
+
+    public function index()
+    {
+        return Jogo::all();
+    }
+
+    public function show(int $idJogo)
+    {
+        return Jogo::find($idJogo);
+    }
 }

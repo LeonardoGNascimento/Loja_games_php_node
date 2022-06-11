@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('nome')->unique();
             $table->string('faixa_etaria', 3);
             $table->bigInteger('id_genero')->unsigned();
-            $table->integer('id_desenvolvedora');
+            $table->bigInteger('id_produtora')->unsigned();
             $table->timestamps();
+            $table->foreign('id_genero')->references('id')->on('generos');
+            $table->foreign('id_produtora')->references('id')->on('produtoras');
         });
     }
 

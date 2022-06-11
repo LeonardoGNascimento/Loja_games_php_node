@@ -1,6 +1,6 @@
 <?php
 
-use App\Dominio\Produtora\Controller\ProdutoraController;
+use App\src\Produtora\Controller\ProdutoraController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('produtoras')->group(function () {

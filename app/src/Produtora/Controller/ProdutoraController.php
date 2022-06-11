@@ -11,7 +11,6 @@ use Illuminate\Http\JsonResponse;
 class ProdutoraController extends Controller
 {
     
-
     public function __construct(
         protected ProdutoraService $produtoraService
     )

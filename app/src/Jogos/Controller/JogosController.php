@@ -20,4 +20,16 @@ class JogosController extends Controller implements IJogosController
         $resultado = $this->jogosService->store($request);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
+
+    public function index()
+    {
+        $resultado = $this->jogosService->index();
+        return response()->json($resultado, HttpStatus::HTTP_OK->value);
+    }
+
+    public function show($idJogo)
+    {
+        $resultado = $this->jogosService->show($idJogo);
+        return response()->json($resultado, HttpStatus::HTTP_OK->value);
+    }
 }
