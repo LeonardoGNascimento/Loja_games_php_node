@@ -2,11 +2,11 @@
 
 namespace App\src\Usuario\Repository;
 
-use App\src\Usuario\Model\Usuario;
+use App\Models\User;
 
 class UsuarioRepository
 {
-    public function store(Usuario $usuario)
+    public function store(User $usuario)
     {
         return $usuario->save();
     }

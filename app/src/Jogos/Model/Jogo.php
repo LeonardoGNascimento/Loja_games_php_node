@@ -13,6 +13,7 @@ class Jogo extends Model
         'nome', 
         'faixa_etaria', 
         'id_genero', 
-        'id_produtora'
+        'id_produtora',
+        'valor'
     ];
 }

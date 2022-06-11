@@ -36,6 +36,7 @@ class JogosService
         $jogo->faixa_etaria = $request['faixa_etaria'];
         $jogo->id_genero = $genero->id;
         $jogo->id_produtora = $produtora->id;
+        $jogo->valor = $request['valor'];
 
         $this->jogosRepository->store($jogo);
 

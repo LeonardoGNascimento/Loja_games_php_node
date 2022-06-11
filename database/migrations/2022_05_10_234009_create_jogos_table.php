@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('faixa_etaria', 3);
             $table->bigInteger('id_genero')->unsigned();
             $table->bigInteger('id_produtora')->unsigned();
+            $table->decimal('valor', 10, 2)->default(0);
             $table->timestamps();
             $table->foreign('id_genero')->references('id')->on('generos');
             $table->foreign('id_produtora')->references('id')->on('produtoras');

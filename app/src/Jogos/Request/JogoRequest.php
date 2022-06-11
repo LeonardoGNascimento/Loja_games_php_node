@@ -18,7 +18,8 @@ class JogoRequest extends FormRequest
             "nome" => "required|string",
             "faixa_etaria" => "required|int",
             "id_genero" => "required|int",
-            "id_produtora" => "required|integer"
+            "id_produtora" => "required|integer",
+            "valor" => "required"
         ];
     }
 }
