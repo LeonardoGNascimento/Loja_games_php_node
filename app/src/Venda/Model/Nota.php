@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Nota extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'id_usuario',
         'total_itens',

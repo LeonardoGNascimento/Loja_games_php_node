@@ -4,7 +4,7 @@ namespace App\src\Jogos\Service;
 
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
-use App\src\Jogos\Model\Genero;
+use App\src\Jogos\Dominio\Model\Genero;
 use App\src\Jogos\Repository\GenerosRepository;
 
 class GenerosService
@@ -24,7 +24,7 @@ class GenerosService
         $verificarGeneroExiste = $this->generosRepository->buscarGeneroPorNome($genero->nome);
 
         if(!empty($verificarGeneroExiste)) {
-            throw new HttpException('Gênero já cadastrado', HttpStatus::HTTP_BAD_REQUEST->value);
+            throw new HttpException('Gênero j cadastrado', HttpStatus::HTTP_BAD_REQUEST->value);
         }
 
         $this->generosRepository->store($genero);
@@ -47,7 +47,7 @@ class GenerosService
     {
         $resultado = $this->generosRepository->buscarGeneroPorNome($nome);
 
-        if(empty($resultado->nome)) {
+        if(empty($resultado)) {
             throw new HttpException('Nenhum gênero encontrado', HttpStatus::HTTP_NOT_FOUND->value);
         }
 

@@ -2,7 +2,8 @@
 
 namespace App\src\Jogos\Repository;
 
-use App\src\Jogos\Model\Genero;
+use App\src\Jogos\Dominio\Model\Genero;
+use Illuminate\Support\Facades\DB;
 
 class GenerosRepository
 {
@@ -18,7 +19,13 @@ class GenerosRepository
 
     public function show($idGenero)
     {
-        return Genero::find($idGenero);
+        $resultado = Genero::find($idGenero);
+
+        if (empty($resultado)) {
+            return null;
+        }
+
+        return $resultado;
     }
 
     public function buscarGeneroPorNome($nome) 

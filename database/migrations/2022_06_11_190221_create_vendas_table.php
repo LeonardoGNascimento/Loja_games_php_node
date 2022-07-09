@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('id_jogo')->unsigned();
             $table->bigInteger('id_nota')->unsigned();
-            $table->timestamps();
             $table->foreign('id_jogo')->references('id')->on('jogos');
             $table->foreign('id_nota')->references('id')->on('notas');
         });

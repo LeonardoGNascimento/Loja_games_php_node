@@ -2,7 +2,8 @@
 
 namespace App\src\Jogos\Repository;
 
-use App\src\Jogos\Model\Jogo;
+use App\src\Jogos\Dominio\Model\Jogo;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class JogosRepository
 {
@@ -13,7 +14,22 @@ class JogosRepository
 
     public function index()
     {
-        return Jogo::all();
+        $resultados = Jogo::all()->toArray();
+
+        if (empty($resultados)) {
+            return null;
+        }
+
+        $jogos = new ArrayCollection();
+
+        foreach ($resultados as $resultado) {
+            $jogo = new Jogo();
+            $jogo->fill($resultado);
+
+            $jogos->add($jogo);
+        }
+
+        return $jogos->toArray();
     }
 
     public function show(int $idJogo)

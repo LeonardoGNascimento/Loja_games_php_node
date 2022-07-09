@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Produtora extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'nome',
         'faixa_etaria',

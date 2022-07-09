@@ -4,7 +4,7 @@ namespace App\src\Jogos\Controller;
 
 use App\Enum\HttpStatus;
 use App\Http\Controllers\Controller;
-use App\src\Jogos\Model\Genero;
+use App\src\Jogos\Dominio\Model\Genero;
 use App\src\Jogos\Request\GeneroRequest;
 use App\src\Jogos\Service\GenerosService;
 use Illuminate\Http\JsonResponse;

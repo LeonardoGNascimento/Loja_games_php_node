@@ -19,7 +19,13 @@ class ProdutoraRepository
 
     public function show($id)
     {
-        return Produtora::find($id);
+        $resultado = Produtora::find($id);
+
+        if (empty($resultado)) {
+            return null;
+        }
+
+        return $resultado;
     }
 
     public function update(Produtora $produtora)
@@ -32,7 +38,7 @@ class ProdutoraRepository
 
     public function buscarPorNome($nome)
     {
-        $resultado = Produtora::where('nome', $nome)->fist();
+        $resultado = Produtora::where('nome', $nome)->first();
 
         if (empty($resultado)) {
             return null;

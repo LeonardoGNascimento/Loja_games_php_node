@@ -4,8 +4,7 @@ namespace App\src\Jogos\Service;
 
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
-use App\src\Jogos\Model\Jogo;
-use App\src\Jogos\Model\Query\JogoQuery;
+use App\src\Jogos\Dominio\Model\Jogo;
 use App\src\Jogos\Repository\JogosRepository;
 use App\src\Produtora\Service\ProdutoraService;
 use Exception;
@@ -35,7 +34,13 @@ class JogosService
 
     public function index()
     {
-        return $this->jogosRepository->index();
+        $resultado = $this->jogosRepository->index();
+
+        if (empty($resultado)) {
+            throw new HttpException('Nenhum jogo encontrado', HttpStatus::HTTP_NOT_FOUND->value);
+        }
+
+        return $resultado;
     }
 
     public function show(int $idJogo)
@@ -46,16 +51,6 @@ class JogosService
             throw new HttpException('Jogo não encontrado!', HttpStatus::HTTP_NOT_FOUND->value);
         }
 
-        try {
-            $produtora = $this->produtoraService->show($jogo->id_produtora);
-        } catch (Exception $error) {
-            throw new HttpException($error->getMessage(), $error->getCode());
-        }
-
-        $jogoQuery = new JogoQuery();
-        $jogoQuery->setJogo($jogo);
-        $jogoQuery->setProdutora($produtora);
-
-        return $jogoQuery;
+        return $jogo;
     }
 }

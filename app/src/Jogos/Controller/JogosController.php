@@ -5,7 +5,7 @@ namespace App\src\Jogos\Controller;
 
 use App\Enum\HttpStatus;
 use App\Http\Controllers\Controller;
-use App\src\Jogos\Model\Jogo;
+use App\src\Jogos\Dominio\Model\Jogo;
 use App\src\Jogos\Request\JogoRequest;
 use App\src\Jogos\Service\JogosService;
 use Illuminate\Http\JsonResponse;
