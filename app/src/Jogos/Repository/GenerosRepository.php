@@ -15,8 +15,20 @@ class GenerosRepository
     {
         return $genero->save();
     }
+
     public function show($idGenero)
     {
         return Genero::find($idGenero);
+    }
+
+    public function buscarGeneroPorNome($nome) 
+    {
+        $resultado = Genero::where('nome', $nome)->first();
+
+        if(empty($resultado)) {
+            return null;
+        }
+
+        return $resultado;
     }
 }

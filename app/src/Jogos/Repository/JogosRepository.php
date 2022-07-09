@@ -18,6 +18,12 @@ class JogosRepository
 
     public function show(int $idJogo)
     {
-        return Jogo::find($idJogo);
+        $resultado = Jogo::where('id', $idJogo)->first();
+
+        if (empty($resultado)) {
+            return null;
+        }
+
+        return $resultado;
     }
 }

@@ -4,6 +4,7 @@ namespace App\src\Jogos\Controller;
 
 use App\Enum\HttpStatus;
 use App\Http\Controllers\Controller;
+use App\src\Jogos\Model\Genero;
 use App\src\Jogos\Request\GeneroRequest;
 use App\src\Jogos\Service\GenerosService;
 use Illuminate\Http\JsonResponse;
@@ -23,7 +24,9 @@ class GenerosController extends Controller implements IGenerosController
 
     public function store(GeneroRequest $request): JsonResponse
     {
-        $resultado = $this->generosService->store($request);
+        $genero = new Genero();
+        $genero->fill($request->all());
+        $resultado = $this->generosService->store($genero);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 

@@ -9,9 +9,8 @@ use App\src\Jogos\Repository\GenerosRepository;
 
 class GenerosService
 {
-
     public function __construct(
-        protected GenerosRepository $generosRepository
+        private GenerosRepository $generosRepository
     )
     {}
 
@@ -20,12 +19,15 @@ class GenerosService
         return $this->generosRepository->index();
     }
 
-    public function store($request)
+    public function store(Genero $genero)
     {
-        $genero = new Genero();
-        $genero->nome = $request['nome'];
+        $verificarGeneroExiste = $this->generosRepository->buscarGeneroPorNome($genero->nome);
 
-        $resultado = $this->generosRepository->store($genero);
+        if(!empty($verificarGeneroExiste)) {
+            throw new HttpException('Gênero já cadastrado', HttpStatus::HTTP_BAD_REQUEST->value);
+        }
+
+        $this->generosRepository->store($genero);
         
         return $genero;
     }
@@ -35,6 +37,17 @@ class GenerosService
         $resultado = $this->generosRepository->show($idGenero);
 
         if(empty($resultado)) {
+            throw new HttpException('Nenhum gênero encontrado', HttpStatus::HTTP_NOT_FOUND->value);
+        }
+
+        return $resultado;
+    }
+
+    public function buscarGeneroPorNome($nome)
+    {
+        $resultado = $this->generosRepository->buscarGeneroPorNome($nome);
+
+        if(empty($resultado->nome)) {
             throw new HttpException('Nenhum gênero encontrado', HttpStatus::HTTP_NOT_FOUND->value);
         }
 

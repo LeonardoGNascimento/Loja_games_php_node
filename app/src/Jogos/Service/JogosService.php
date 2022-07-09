@@ -5,38 +5,28 @@ namespace App\src\Jogos\Service;
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
 use App\src\Jogos\Model\Jogo;
-use App\src\Jogos\Repository\GenerosRepository;
+use App\src\Jogos\Model\Query\JogoQuery;
 use App\src\Jogos\Repository\JogosRepository;
-use App\src\Produtora\Repository\ProdutoraRepository;
+use App\src\Produtora\Service\ProdutoraService;
+use Exception;
 
 class JogosService
 {
     public function __construct(
         protected JogosRepository $jogosRepository,
-        protected ProdutoraRepository $produtoraRepository,
-        protected GenerosRepository $generosRepository,
+        private GenerosService $generosService,
+        private ProdutoraService $produtoraService
     )
     {}
 
-    public function store($request): Jogo
+    public function store(Jogo $jogo): Jogo
     {
-        $produtora = $this->produtoraRepository->show($request['id_produtora']);
-        $genero = $this->generosRepository->show($request['id_genero']);
-
-        if(empty($produtora)){
-            throw new HttpException('Produtora não encontrada!', HttpStatus::HTTP_NOT_FOUND->value);
+        try {
+            $this->generosService->show($jogo->id_genero);
+            $this->produtoraService->show($jogo->id_produtora);
+        }catch (Exception $error) {
+            throw new HttpException($error->getMessage(), $error->getCode());
         }
-
-        if(empty($genero)){
-            throw new HttpException('Gênero não encontrado!', HttpStatus::HTTP_NOT_FOUND->value);
-        }
-
-        $jogo = new Jogo();
-        $jogo->nome = $request['nome'];
-        $jogo->faixa_etaria = $request['faixa_etaria'];
-        $jogo->id_genero = $genero->id;
-        $jogo->id_produtora = $produtora->id;
-        $jogo->valor = $request['valor'];
 
         $this->jogosRepository->store($jogo);
 
@@ -50,12 +40,22 @@ class JogosService
 
     public function show(int $idJogo)
     {
-        $resultado = $this->jogosRepository->show($idJogo);
+        $jogo = $this->jogosRepository->show($idJogo);
 
-        if(empty($resultado)) {
+        if(empty($jogo)) {
             throw new HttpException('Jogo não encontrado!', HttpStatus::HTTP_NOT_FOUND->value);
         }
 
-        return $resultado;
+        try {
+            $produtora = $this->produtoraService->show($jogo->id_produtora);
+        } catch (Exception $error) {
+            throw new HttpException($error->getMessage(), $error->getCode());
+        }
+
+        $jogoQuery = new JogoQuery();
+        $jogoQuery->setJogo($jogo);
+        $jogoQuery->setProdutora($produtora);
+
+        return $jogoQuery;
     }
 }

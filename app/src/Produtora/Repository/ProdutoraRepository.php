@@ -22,12 +22,22 @@ class ProdutoraRepository
         return Produtora::find($id);
     }
 
-    public function update($recurso, $nomeProdutora)
+    public function update(Produtora $produtora)
     {
-        $recurso->fill(['nome' => $nomeProdutora]);
-        $recurso->save();
+        Produtora::where('id', $produtora->id)
+            ->update(['nome' => $produtora->nome]);
 
-        return $recurso;
+        return $produtora;
     }
 
+    public function buscarPorNome($nome)
+    {
+        $resultado = Produtora::where('nome', $nome)->fist();
+
+        if (empty($resultado)) {
+            return null;
+        }
+
+        return $resultado;
+    }
 }

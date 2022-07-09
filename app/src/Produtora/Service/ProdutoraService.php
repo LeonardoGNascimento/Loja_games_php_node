@@ -6,7 +6,7 @@ use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
 use App\src\Produtora\Model\Produtora;
 use App\src\Produtora\Repository\ProdutoraRepository;
-use App\src\Produtora\Request\ProdutoraRequest;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 
 class ProdutoraService
@@ -27,10 +27,14 @@ class ProdutoraService
         return $resultado;
     }
 
-    public function store(ProdutoraRequest $request)
+    public function store(Produtora $produtora)
     {
-        $produtora = new Produtora();
-        $produtora->nome = $request['nome'];
+
+        $verificarProdutoraExistente = $this->produtoraRepository->buscarPorNome($produtora->nome);
+
+        if(!empty($verificarProdutoraExistente)) {
+            throw new HttpException('Produtora já cadastrada', HttpStatus::HTTP_BAD_REQUEST->value);
+        }
 
         $this->produtoraRepository->store($produtora);
 
@@ -48,14 +52,14 @@ class ProdutoraService
         return $resultado;
     }
 
-    public function update($id, $nomeProdutora)
+    public function update(Produtora $produtora)
     {
-        $produtora = $this->produtoraRepository->show($id);
-
-        if (!$produtora) {
-            throw new HttpException('Produtora não encontrada!', HttpStatus::HTTP_NOT_FOUND->value);
+        try{
+            $this->show($produtora->id);
+        } catch (Exception $error) {
+            throw new HttpException($error->getMessage(), $error->getCode());
         }
 
-        return $this->produtoraRepository->update($produtora, $nomeProdutora);
+        return $this->produtoraRepository->update($produtora);
     }
 }

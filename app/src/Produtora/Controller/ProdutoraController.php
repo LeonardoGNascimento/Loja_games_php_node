@@ -4,6 +4,7 @@ namespace App\src\Produtora\Controller;
 
 use App\Enum\HttpStatus;
 use App\Http\Controllers\Controller;
+use App\src\Produtora\Model\Produtora;
 use App\src\Produtora\Request\ProdutoraRequest;
 use App\src\Produtora\Service\ProdutoraService;
 use Illuminate\Http\JsonResponse;
@@ -25,7 +26,10 @@ class ProdutoraController extends Controller
 
     public function store(ProdutoraRequest $request): JsonResponse
     {
-        $resultado = $this->produtoraService->store($request);
+        $produtora = new Produtora();
+        $produtora->fill($request->all());
+
+        $resultado = $this->produtoraService->store($produtora);
 
         return response()->json($resultado, HttpStatus::HTTP_CREATED->value);
     }
@@ -38,8 +42,11 @@ class ProdutoraController extends Controller
 
     public function update(int $id, ProdutoraRequest $request): JsonResponse
     {
-        $nomeProdutora = $request['nome'];
-        $resultado = $this->produtoraService->update($id, $nomeProdutora);
+        $produtora = new Produtora();
+        $produtora->id = $id;
+        $produtora->fill($request->all());
+
+        $resultado = $this->produtoraService->update($produtora);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 }
