@@ -32,7 +32,8 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(function ($router) {
-                require base_path('routes/Jogos/jogos.php');
+                require base_path('app/src/Jogos/Routes/Jogos.php');
+                require base_path('app/src/Jogos/Routes/Genero.php');
                 require base_path('routes/Produtoras/produtoras.php');
                 require base_path('routes/Usuarios/usuarios.php');
                 require base_path('routes/Vendas/vendas.php');

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\src\Jogos\Service;
+namespace App\src\Jogos\Aplicativo\Service;
 
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
 use App\src\Jogos\Dominio\Model\Jogo;
-use App\src\Jogos\Repository\JogosRepository;
+use App\src\Jogos\Infra\Repository\JogosRepository;
+use App\src\Jogos\Service\GenerosService;
 use App\src\Produtora\Service\ProdutoraService;
 use Exception;
 
@@ -15,15 +16,15 @@ class JogosService
         protected JogosRepository $jogosRepository,
         private GenerosService $generosService,
         private ProdutoraService $produtoraService
-    )
-    {}
+    ) {
+    }
 
     public function store(Jogo $jogo): Jogo
     {
         try {
             $this->generosService->show($jogo->id_genero);
             $this->produtoraService->show($jogo->id_produtora);
-        }catch (Exception $error) {
+        } catch (Exception $error) {
             throw new HttpException($error->getMessage(), $error->getCode());
         }
 
@@ -47,7 +48,7 @@ class JogosService
     {
         $jogo = $this->jogosRepository->show($idJogo);
 
-        if(empty($jogo)) {
+        if (empty($jogo)) {
             throw new HttpException('Jogo não encontrado!', HttpStatus::HTTP_NOT_FOUND->value);
         }
 

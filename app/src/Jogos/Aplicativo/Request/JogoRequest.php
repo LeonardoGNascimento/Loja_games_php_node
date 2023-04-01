@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Jogos\Request;
+namespace App\src\Jogos\Aplicativo\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\src\Jogos\Controller;
+namespace App\src\Jogos\Aplicativo\Controller;
 
-use App\src\Jogos\Model\Jogo;
-use App\src\Jogos\Request\JogoRequest;
+use App\src\Jogos\Aplicativo\Request\JogoRequest;
 use Illuminate\Http\JsonResponse;
 
 interface IJogosController

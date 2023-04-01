@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Jogos\Repository;
+namespace App\src\Jogos\Infra\Repository;
 
 use App\src\Jogos\Dominio\Model\Jogo;
 use Doctrine\Common\Collections\ArrayCollection;

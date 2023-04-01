@@ -1,8 +1,8 @@
 <?php
 
-namespace App\src\Jogos\Controller;
+namespace App\src\Jogos\Aplicativo\Controller;
 
-use App\src\Jogos\Request\GeneroRequest;
+use App\src\Jogos\Aplicativo\Request\GeneroRequest;
 use Illuminate\Http\JsonResponse;
 
 interface IGenerosController

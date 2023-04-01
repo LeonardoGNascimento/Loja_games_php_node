@@ -1,13 +1,13 @@
 <?php
 
-namespace App\src\Jogos\Controller;
+namespace App\src\Jogos\Aplicativo\Controller;
 
 
 use App\Enum\HttpStatus;
 use App\Http\Controllers\Controller;
+use App\src\Jogos\Aplicativo\Request\JogoRequest;
+use App\src\Jogos\Aplicativo\Service\JogosService;
 use App\src\Jogos\Dominio\Model\Jogo;
-use App\src\Jogos\Request\JogoRequest;
-use App\src\Jogos\Service\JogosService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,8 @@ class JogosController extends Controller implements IJogosController
 {
     public function __construct(
         protected JogosService $jogosService
-    ) {}
+    ) {
+    }
 
     public function store(JogoRequest $request): JsonResponse
     {
