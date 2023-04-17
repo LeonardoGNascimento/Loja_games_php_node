@@ -6,16 +6,12 @@ use App\Exceptions\BadRequestException;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-abstract class Command
+abstract class Command implements ICommand
 {
-    public $rules = [];
-
-    public function destruct()
+    public function destruct(): array
     {
         foreach ($this as $key => $value) {
-            if ($key != "rules") {
-                $retorno[$key] = $value;
-            }
+            $retorno[$key] = $value;
         }
 
         return $retorno;
@@ -24,9 +20,14 @@ abstract class Command
     public function validate()
     {
         try {
-            Validator::make($this->destruct(), $this->rules)->validate();
+            Validator::make($this->destruct(), $this->rules())->validate();
         } catch (ValidationException $e) {
             throw new BadRequestException($e->getMessage(), $e->errors());
         }
+    }
+
+    public function rules(): array
+    {
+        return [];
     }
 }
