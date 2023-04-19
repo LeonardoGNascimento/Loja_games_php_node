@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use App\src\Usuario\Aplicacao\Service\UsuarioService;
 use App\src\Usuario\Dominio\Command\CriarUsuarioCommand;
 use App\src\Usuario\Request\UsuarioRequest;
-
 use Illuminate\Http\JsonResponse;
 
-class UsuarioController extends Controller
+class UsuarioController extends Controller implements IUsuarioController
 {
     public function __construct(
         private UsuarioService $usuarioService
