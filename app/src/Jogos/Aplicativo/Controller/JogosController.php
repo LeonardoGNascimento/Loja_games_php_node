@@ -9,7 +9,6 @@ use App\src\Jogos\Aplicativo\Request\JogoRequest;
 use App\src\Jogos\Aplicativo\Service\JogosService;
 use App\src\Jogos\Dominio\Model\Jogo;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class JogosController extends Controller implements IJogosController
 {
@@ -27,13 +26,13 @@ class JogosController extends Controller implements IJogosController
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 
-    public function index(Request $request)
+    public function index(): JsonResponse
     {
         $resultado = $this->jogosService->index();
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 
-    public function show($idJogo)
+    public function show($idJogo): JsonResponse
     {
         $resultado = $this->jogosService->show($idJogo);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
