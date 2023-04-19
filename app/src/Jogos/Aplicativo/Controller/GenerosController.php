@@ -7,8 +7,6 @@ use App\Http\Controllers\Controller;
 use App\src\Jogos\Aplicativo\Request\GeneroRequest;
 use App\src\Jogos\Aplicativo\Service\GenerosService;
 use App\src\Jogos\Dominio\Command\CriarGeneroCommand;
-use App\src\Jogos\Dominio\Model\Genero;
-use App\src\Jogos\Request\GeneroRequest as RequestGeneroRequest;
 use Illuminate\Http\JsonResponse;
 
 class GenerosController extends Controller implements IGenerosController
@@ -32,7 +30,7 @@ class GenerosController extends Controller implements IGenerosController
         return response()->json($resultado, HttpStatus::HTTP_OK->value);
     }
 
-    public function show($idGenero): JsonResponse
+    public function show(int $idGenero): JsonResponse
     {
         $resultado = $this->generosService->show($idGenero);
         return response()->json($resultado, HttpStatus::HTTP_OK->value);

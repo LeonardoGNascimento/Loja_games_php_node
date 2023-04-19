@@ -9,5 +9,5 @@ interface IGenerosController
 {
     public function index(): JsonResponse;
     public function store(GeneroRequest $request): JsonResponse;
-    public function show($idGenero): JsonResponse;
+    public function show(int $idGenero): JsonResponse;
 }
