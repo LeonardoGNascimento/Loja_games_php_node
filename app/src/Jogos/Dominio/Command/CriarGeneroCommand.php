@@ -7,7 +7,7 @@ use App\src\Core\Command;
 class CriarGeneroCommand extends Command
 {
     public function __construct(
-        public $nome
+        public string $nome
     ) {
     }
 
