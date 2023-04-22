@@ -17,7 +17,7 @@ class ProdutoraService
     ) {
     }
 
-    public function index(): Collection
+    public function index(): array
     {
         $resultado = $this->produtoraRepository->index();
 

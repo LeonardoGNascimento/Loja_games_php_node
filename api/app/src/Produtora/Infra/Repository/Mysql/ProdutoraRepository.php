@@ -9,10 +9,10 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ProdutoraRepository
 {
-    public function index(): Collection | null
+    public function index(): array | null
     {
         try {
-            $resultado = (Produtora::all())->toArray();
+            $resultado = (Produtora::all())->all();
 
             if (empty($resultado)) {
                 return null;
