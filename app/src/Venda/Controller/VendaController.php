@@ -6,6 +6,7 @@ use App\Enum\HttpStatus;
 use App\Http\Controllers\Controller;
 use App\src\Venda\Request\VendaRequest;
 use App\src\Venda\Service\VendaService;
+use Illuminate\Http\JsonResponse;
 
 class VendaController extends Controller
 {
@@ -14,7 +15,7 @@ class VendaController extends Controller
     ) {
     }
 
-    public function store(VendaRequest $request)
+    public function store(VendaRequest $request): JsonResponse
     {
         $usuario = $request->user();
         $jogos = $request->id_jogo;

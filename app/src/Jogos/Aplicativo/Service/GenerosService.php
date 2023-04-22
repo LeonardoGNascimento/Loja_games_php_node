@@ -4,9 +4,7 @@ namespace App\src\Jogos\Aplicativo\Service;
 
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
-use App\src\Jogos\Aplicativo\Request\GeneroRequest;
 use App\src\Jogos\Dominio\Command\CriarGeneroCommand;
-use App\src\Jogos\Dominio\Model\Genero;
 use App\src\Jogos\Infra\Repository\GenerosRepository;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -47,7 +45,7 @@ class GenerosService
         return $resultado;
     }
 
-    public function show($idGenero)
+    public function show(int $idGenero)
     {
         $resultado = $this->generosRepository->show($idGenero);
 

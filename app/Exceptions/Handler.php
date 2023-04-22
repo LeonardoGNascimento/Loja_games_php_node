@@ -43,8 +43,23 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        $this->reportable(function (Throwable $e) {
+        $this->reportable(function (Throwable $exception) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception->getCode() === 0) {
+            return response()->json([
+                'message' => 'Ocorreu um erro, entre em contato com a equipe de T.I',
+                'code' => 500
+            ], 500);
+        }
+
+
+        // o código existente para lidar com outras exceções
+
+        return parent::render($request, $exception);
     }
 }

@@ -35,7 +35,7 @@ class GenerosRepository
         }
     }
 
-    public function show($idGenero): Genero | null
+    public function show(int $idGenero): Genero | null
     {
         try {
             $resultado = Genero::find($idGenero);

@@ -14,6 +14,11 @@ class BadRequestException extends Exception
         parent::__construct($message, 400);
     }
 
+    public function getErros()
+    {
+        return $this->erros;
+    }
+
     public function render($request): JsonResponse
     {
         return response()->json(

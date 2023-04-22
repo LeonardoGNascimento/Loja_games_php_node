@@ -4,9 +4,9 @@ namespace App\src\Jogos\Aplicativo\Service;
 
 use App\Enum\HttpStatus;
 use App\Exceptions\HttpException;
+use App\src\Jogos\Aplicativo\Service\GenerosService;
 use App\src\Jogos\Dominio\Model\Jogo;
 use App\src\Jogos\Infra\Repository\JogosRepository;
-use App\src\Jogos\Service\GenerosService;
 use App\src\Produtora\Service\ProdutoraService;
 use Exception;
 
