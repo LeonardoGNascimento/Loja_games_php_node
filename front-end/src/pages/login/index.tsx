@@ -48,12 +48,12 @@ export function Login() {
       <LoginModal>
         <Row>
           <Col>
-            <Image src={teste} />
+            {/* <Image src={teste} /> */}
           </Col>
           <Col>
             <Div>
               <div>
-                <Titulo>UTI do Celular</Titulo>
+                <Titulo>Loja Games</Titulo>
                 <Form onSubmit={handleSubmit(handleLogin)}>
                   <Form.Group controlId="email">
                     <Input error={errors.email?.message}>

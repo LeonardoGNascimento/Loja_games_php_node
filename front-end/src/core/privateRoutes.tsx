@@ -6,11 +6,11 @@ interface Props {
 }
 
 export const Private = ({ children }: Props) => {
-  const token = localStorage.getItem("@token");
+  // const token = localStorage.getItem("@token");
 
-  if (!token) {
-    return <Navigate to="/" />;
-  }
+  // if (!token) {
+  //   return <Navigate to="/" />;
+  // }
 
   return <Screen>{children}</Screen>;
 };
