@@ -9,7 +9,7 @@ class BadRequestException extends Exception
 {
     public function __construct(
         $message,
-        public $erros
+        public $erros = []
     ) {
         parent::__construct($message, 400);
     }

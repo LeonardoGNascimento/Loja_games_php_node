@@ -7,7 +7,7 @@ use App\Exceptions\HttpException;
 use App\src\Jogos\Aplicativo\Service\GenerosService;
 use App\src\Jogos\Dominio\Model\Jogo;
 use App\src\Jogos\Infra\Repository\JogosRepository;
-use App\src\Produtora\Service\ProdutoraService;
+use App\src\Produtora\Aplicacao\Service\ProdutoraService;
 use Exception;
 
 class JogosService

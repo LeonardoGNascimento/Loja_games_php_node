@@ -7,7 +7,7 @@ use App\src\Jogos\Aplicativo\Service\GenerosService;
 use App\src\Jogos\Aplicativo\Service\JogosService;
 use App\src\Jogos\Dominio\Model\Jogo;
 use App\src\Jogos\Infra\Repository\JogosRepository;
-use App\src\Produtora\Service\ProdutoraService;
+use App\src\Produtora\Aplicacao\Service\ProdutoraService;
 use Tests\TestCase;
 
 class JogosServiceTest extends TestCase
