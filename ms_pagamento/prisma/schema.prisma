@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model notas {
+  id          Int      @id @default(autoincrement())
+  id_usuario  Int
+  total_itens Int
+  valor       Decimal  @default(0.00) @db.Decimal(10, 2)
+  vendas      vendas[]
+}
+
+model vendas {
+  id      Int    @id @default(autoincrement())
+  id_jogo Int
+  id_nota Int
+  notas   notas? @relation(fields: [id_nota], references: [id])
+}
