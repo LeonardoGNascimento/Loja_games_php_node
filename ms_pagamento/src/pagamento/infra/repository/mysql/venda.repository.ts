@@ -15,7 +15,7 @@ export class VendaRepository {
         return false;
       }
 
-      return;
+      return resultado;
     } catch (error) {
       return false;
     }
@@ -23,7 +23,6 @@ export class VendaRepository {
 
   async criar(criarVenda: CriarVenda): Promise<Venda | false> {
     try {
-      delete criarVenda.valor;
       return await this.prismaService.vendas.create({
         data: criarVenda,
       });

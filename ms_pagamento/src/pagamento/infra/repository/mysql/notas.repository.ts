@@ -57,7 +57,17 @@ export class NotasRepository {
     }
   }
 
-  async listar() {
-    return await this.prismaService.notas.findMany();
+  async listar(): Promise<Notas[] | false> {
+    try {
+      const resultado = await this.prismaService.notas.findMany();
+
+      if (resultado.length <= 0) {
+        return false;
+      }
+
+      return resultado;
+    } catch (error) {
+      return false;
+    }
   }
 }
