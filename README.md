@@ -4,8 +4,11 @@ Instalação
 Para executar o projeto localmente, é necessário ter instalado o PHP, o Node.js.
 
 Após clonar o repositório, instale as dependências do Node.js executando o seguinte comando na raiz do projeto:
-
+````
+```
 npm install
+```
+````
 
 Em seguida, configure as informações do banco de dados no arquivo .env. Você pode usar o arquivo .env-example como base para isso.
 
