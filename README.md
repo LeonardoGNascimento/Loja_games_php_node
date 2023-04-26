@@ -17,7 +17,7 @@ Por fim, inicie o servidor PHP executando o comando:
 php artisan serve
 ````
 
-Uso
+#Uso
 A loja virtual permite que os usuários visualizem e comprem jogos disponíveis no catálogo. Os usuários podem se cadastrar e fazer login para realizar compras e acessar seus históricos de compras.
 
 Os administradores da loja podem gerenciar os jogos disponíveis e as compras realizadas pelos usuários.
